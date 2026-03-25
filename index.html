@@ -1,0 +1,547 @@
+ <!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>THE DARKNESS · Développeur · Bot WhatsApp DARKNESS X-MD</title>
+    <meta name="description" content="Portfolio de THE DARKNESS, développeur web spécialisé HTML/JavaScript. Créateur du bot WhatsApp DARKNESS X-MD. Découvrez mes projets et contactez-moi.">
+    <style>
+        /* ===== RESET & BASE ===== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: #050505;
+            color: #ececec;
+            font-family: 'Poppins', 'Inter', 'Segoe UI', system-ui, -apple-system, BlinkMacSystemFont, monospace;
+            line-height: 1.5;
+            padding: 2rem 1.5rem;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        /* ===== EFFET 3D SENIOR ===== */
+        .perspective-wrapper {
+            perspective: 1200px;
+            transform-style: preserve-3d;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 2;
+            transform: translateZ(30px);
+            transition: transform 0.2s ease-out;
+        }
+
+        /* Fond 3D dynamique */
+        .bg-3d {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -2;
+            transform: translateZ(-80px) scale(1.2);
+            transition: transform 0.15s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+            will-change: transform;
+        }
+
+        .bg-3d::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('https://images.unsplash.com/photo-1534796636912-3b95b3ab5986?q=80&w=2071&auto=format') no-repeat center center/cover;
+            opacity: 0.35;
+            filter: brightness(0.6) contrast(1.2) blur(2px);
+        }
+
+        .bg-3d::after {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at center, rgba(0,0,0,0.3) 0%, rgba(0,0,0,0.85) 100%);
+        }
+
+        body::after {
+            content: "";
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: #050505;
+            opacity: 0.6;
+            z-index: -1;
+        }
+
+        /* Navigation */
+        nav {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-bottom: 3rem;
+            transform: translateZ(20px);
+        }
+
+        nav a {
+            color: #e0e0e0;
+            text-decoration: none;
+            font-weight: 600;
+            padding: 0.6rem 1.4rem;
+            border-radius: 60px;
+            transition: all 0.4s cubic-bezier(0.2, 0.9, 0.4, 1.2);
+            letter-spacing: 0.5px;
+            backdrop-filter: blur(8px);
+            background: rgba(10,10,10,0.4);
+            border: 1px solid rgba(255,255,255,0.08);
+            transform: translateZ(10px);
+        }
+
+        nav a:hover, nav a.active {
+            background: linear-gradient(135deg, #00ff99, #00cc77);
+            color: #050505;
+            transform: translateY(-3px) translateZ(25px);
+            box-shadow: 0 12px 28px rgba(0,255,153,0.35), 0 0 0 1px rgba(0,255,153,0.3);
+            border-color: transparent;
+        }
+
+        /* ===== SPHÈRE AVEC EFFET FLOAT ET LIEN ===== */
+        .hero-sphere {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 2rem 0 2rem 0;
+            position: relative;
+            transform-style: preserve-3d;
+        }
+
+        .sphere-backglow {
+            position: absolute;
+            width: 340px;
+            height: 340px;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(0,255,153,0.2) 0%, rgba(0,200,120,0.08) 40%, transparent 70%);
+            filter: blur(25px);
+            animation: pulseGlow 4s ease-in-out infinite;
+            z-index: 0;
+        }
+
+        .sphere-container {
+            position: relative;
+            width: 280px;
+            height: 280px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(145deg, rgba(12, 16, 22, 0.85), rgba(6, 8, 12, 0.9));
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(0, 255, 153, 0.4);
+            box-shadow: 0 25px 45px -15px rgba(0,0,0,0.6), 0 0 0 1px rgba(0,255,153,0.15), inset 0 1px 0 rgba(255,255,255,0.05);
+            transition: all 0.5s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+            animation: floatVertical 4.5s ease-in-out infinite;
+            cursor: pointer;
+        }
+
+        .sphere-container:hover {
+            transform: translateY(-8px) translateZ(20px) scale(1.02);
+            border-color: rgba(0, 255, 153, 0.7);
+            box-shadow: 0 35px 55px -20px rgba(0,0,0,0.8), 0 0 0 2px rgba(0,255,153,0.3), 0 0 35px rgba(0,255,153,0.2);
+        }
+
+        .sphere-image {
+            width: 92%;
+            height: 92%;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 2px solid rgba(0, 255, 153, 0.5);
+            transition: all 0.4s ease;
+            filter: brightness(1.1) contrast(1.15) saturate(1.2);
+            box-shadow: 0 0 20px rgba(0,0,0,0.4);
+        }
+
+        .sphere-container:hover .sphere-image {
+            border-color: #00ff99;
+            filter: brightness(1.15) contrast(1.2) saturate(1.25);
+        }
+
+        @keyframes floatVertical {
+            0% {
+                transform: translateY(0px) translateZ(10px);
+            }
+            50% {
+                transform: translateY(-14px) translateZ(15px);
+            }
+            100% {
+                transform: translateY(0px) translateZ(10px);
+            }
+        }
+
+        @keyframes pulseGlow {
+            0% {
+                opacity: 0.4;
+                transform: scale(0.95);
+            }
+            50% {
+                opacity: 0.9;
+                transform: scale(1.08);
+            }
+            100% {
+                opacity: 0.4;
+                transform: scale(0.95);
+            }
+        }
+
+        .sphere-container::before {
+            content: "";
+            position: absolute;
+            top: -5px;
+            left: -5px;
+            right: -5px;
+            bottom: -5px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, rgba(0,255,153,0.25), rgba(0,200,120,0.08), transparent);
+            opacity: 0.5;
+            z-index: -1;
+            transition: opacity 0.4s ease;
+        }
+
+        .sphere-container:hover::before {
+            opacity: 1;
+        }
+
+        /* Hero section */
+        .hero {
+            text-align: center;
+            padding: 2rem 0 2rem 0;
+            border-bottom: 2px solid rgba(0,255,153,0.2);
+            margin-bottom: 1rem;
+        }
+
+        .hero h1 {
+            font-size: 3.2rem;
+            font-weight: 700;
+            font-family: 'Poppins', 'Inter', monospace;
+            color: #00ff99;
+            text-shadow: 0 0 15px rgba(0,255,153,0.3);
+            letter-spacing: -0.5px;
+        }
+
+        .hero .tagline {
+            font-size: 1.2rem;
+            margin: 1rem 0;
+            color: #b0b0c0;
+            font-weight: 500;
+            letter-spacing: 0.3px;
+        }
+
+        .hero p {
+            max-width: 600px;
+            margin: 1rem auto;
+            color: #c0c0d0;
+            font-size: 1rem;
+        }
+
+        /* Sections */
+        .section {
+            margin: 4rem 0;
+        }
+
+        .section h2 {
+            font-size: 2rem;
+            font-weight: 600;
+            border-left: 5px solid #00ff99;
+            padding-left: 1.2rem;
+            margin-bottom: 2rem;
+            font-family: 'Poppins', monospace;
+            letter-spacing: -0.3px;
+        }
+
+        /* Compétences */
+        .skills {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .skill {
+            background: rgba(20, 22, 28, 0.9);
+            backdrop-filter: blur(4px);
+            padding: 0.6rem 1.3rem;
+            border-radius: 60px;
+            border: 1px solid #2f2f3a;
+            font-weight: 600;
+            font-size: 0.85rem;
+            transition: all 0.35s cubic-bezier(0.2, 0.9, 0.4, 1.2);
+            cursor: default;
+            color: #e0e0e0;
+        }
+
+        .skill:hover {
+            border-color: #00ff99;
+            color: #00ff99;
+            transform: translateY(-3px) translateZ(8px);
+            background: rgba(0, 255, 153, 0.08);
+            box-shadow: 0 5px 15px rgba(0,255,153,0.2);
+        }
+
+        /* Cartes de contact */
+        .contact-card {
+            background: linear-gradient(145deg, rgba(12, 16, 22, 0.96) 0%, rgba(6, 8, 12, 0.98) 100%);
+            backdrop-filter: blur(12px);
+            border-radius: 28px;
+            padding: 2rem;
+            border: 1px solid rgba(0, 255, 153, 0.3);
+            box-shadow: 0 20px 35px -12px rgba(0,0,0,0.5);
+            transition: all 0.5s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+        }
+
+        .contact-card:hover {
+            transform: translateY(-8px) translateZ(15px) rotateX(2deg) rotateY(2deg);
+            border-color: #00ff99;
+            box-shadow: 0 30px 45px -15px rgba(0,0,0,0.7), 0 0 20px rgba(0,255,153,0.2);
+        }
+
+        .contact-links {
+            display: flex;
+            gap: 1.2rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-bottom: 2rem;
+        }
+
+        .contact-link {
+            color: #e0e0e0;
+            text-decoration: none;
+            background: rgba(20, 22, 28, 0.9);
+            padding: 0.7rem 1.6rem;
+            border-radius: 60px;
+            border: 1px solid #2f2f3a;
+            font-weight: 600;
+            font-size: 0.85rem;
+            transition: all 0.35s cubic-bezier(0.2, 0.9, 0.4, 1.2);
+            letter-spacing: 0.3px;
+        }
+
+        .contact-link:hover {
+            border-color: #00ff99;
+            color: #00ff99;
+            transform: translateY(-3px) translateZ(8px);
+            background: rgba(0, 255, 153, 0.08);
+            box-shadow: 0 5px 15px rgba(0,255,153,0.2);
+        }
+
+        .form-group {
+            margin-bottom: 1.2rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: #00ff99;
+            font-weight: 500;
+            font-size: 0.85rem;
+            letter-spacing: 0.5px;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 0.9rem 1rem;
+            background: rgba(20, 22, 28, 0.8);
+            border: 1px solid #2f2f3a;
+            border-radius: 16px;
+            color: #fff;
+            font-family: 'Poppins', 'Inter', monospace;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: #00ff99;
+            box-shadow: 0 0 15px rgba(0,255,153,0.2);
+            transform: scale(1.01);
+        }
+
+        button {
+            background: linear-gradient(135deg, #00ff99, #00cc77);
+            color: #050505;
+            border: none;
+            padding: 0.9rem 2rem;
+            border-radius: 60px;
+            font-weight: 700;
+            font-size: 0.9rem;
+            cursor: pointer;
+            transition: all 0.35s cubic-bezier(0.2, 0.9, 0.4, 1.2);
+            letter-spacing: 0.5px;
+        }
+
+        button:hover {
+            transform: translateY(-3px) scale(1.02);
+            box-shadow: 0 8px 25px rgba(0,255,153,0.35);
+        }
+
+        .visitor-counter {
+            text-align: center;
+            margin: 2rem 0;
+            font-size: 0.85rem;
+            color: #8a8a9a;
+            background: rgba(10,10,10,0.4);
+            backdrop-filter: blur(4px);
+            padding: 0.5rem 1.2rem;
+            border-radius: 60px;
+            width: fit-content;
+            margin-left: auto;
+            margin-right: auto;
+            border: 1px solid rgba(255,255,255,0.05);
+        }
+
+        footer {
+            text-align: center;
+            margin-top: 5rem;
+            padding-top: 2rem;
+            border-top: 1px solid #1a1a24;
+            font-size: 0.75rem;
+            color: #6a6a7a;
+        }
+
+        @media (max-width: 780px) {
+            body {
+                padding: 1rem;
+            }
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+            .sphere-container {
+                width: 200px;
+                height: 200px;
+            }
+            .sphere-backglow {
+                width: 240px;
+                height: 240px;
+            }
+            .contact-card {
+                padding: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="bg-3d" id="bg3d"></div>
+    <div class="perspective-wrapper">
+        <div class="container" id="mainContainer">
+            <nav>
+                <a href="index.html" class="active">Accueil</a>
+                <a href="projets.html">Projets</a>
+            </nav>
+
+            <!-- SPHÈRE CLIQUABLE VERS LA PAGE PROJETS -->
+            <div class="hero-sphere">
+                <div class="sphere-backglow"></div>
+                <a href="projets.html" style="text-decoration: none;" aria-label="Voir le projet DARKNESS X-MD">
+                    <div class="sphere-container">
+                        <img class="sphere-image" src="https://files.catbox.moe/n0oi6v.jpg" alt="DARKNESS X-MD">
+                    </div>
+                </a>
+            </div>
+
+            <div class="hero">
+                <h1>THE DARKNESS</h1>
+                <div class="tagline">développeur · créateur du bot DARKNESS X-MD</div>
+                <p>Développeur web passionné par l'automatisation. Créateur du bot WhatsApp DARKNESS X-MD, je transforme les idées en lignes de code.</p>
+            </div>
+
+            <div class="section">
+                <h2>compétences</h2>
+                <div class="skills">
+                    <span class="skill">HTML5</span>
+                    <span class="skill">CSS3</span>
+                    <span class="skill">JavaScript (ES6+)</span>
+                    <span class="skill">Node.js</span>
+                    <span class="skill">API REST</span>
+                    <span class="skill">Git & GitHub</span>
+                </div>
+            </div>
+
+            <div class="section">
+                <h2>me contacter</h2>
+                <div class="contact-card">
+                    <div class="contact-links">
+                        <a href="https://github.com/ghostvaldes02-" class="contact-link">GitHub</a>
+                        <a href="https://twitter.com/" class="contact-link">Twitter / X</a>
+                        <a href="mailto:darkness@example.com" class="contact-link">Email</a>
+                        <a href="http://wa.me/237671281938" class="contact-link">WhatsApp</a>
+                        <a href="https://whatsapp.com/channel/0029VbBz3AYBPzjd5is5mJ2W" target="_blank" class="contact-link">Chaîne WhatsApp</a>
+                    </div>
+                    <h3 style="color:#00ff99; margin-bottom:1.2rem; font-weight:600;">envoyez-moi un message</h3>
+                    <form action="https://formspree.io/f/xreozwkg" method="POST">
+                        <div class="form-group">
+                            <label for="name">Nom / pseudo</label>
+                            <input type="text" name="name" id="name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <input type="email" name="_replyto" id="email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Message</label>
+                            <textarea name="message" id="message" rows="4" required></textarea>
+                        </div>
+                        <button type="submit">Envoyer</button>
+                    </form>
+                </div>
+            </div>
+
+            <div class="visitor-counter" id="visitorCount">
+                Chargement...
+            </div>
+            <footer>
+                <p>© 2025 THE DARKNESS — dimension 3D</p>
+            </footer>
+        </div>
+    </div>
+
+    <script>
+        // Effet 3D dynamique (léger sur le container pour éviter les conflits)
+        const bg = document.getElementById('bg3d');
+        const container = document.getElementById('mainContainer');
+        
+        document.addEventListener('mousemove', (e) => {
+            const x = (e.clientX / window.innerWidth) * 30 - 15;
+            const y = (e.clientY / window.innerHeight) * 20 - 10;
+            bg.style.transform = `translateZ(-80px) translateX(${x * 0.4}px) translateY(${y * 0.3}px) scale(1.2)`;
+            // Effet très léger sur le container pour garder la lisibilité
+            if (container) {
+                container.style.transform = `translateZ(30px) rotateX(${y * 0.02}deg) rotateY(${x * 0.02}deg)`;
+            }
+        });
+
+        // Compteur de visites
+        async function updateVisitorCount() {
+            const counterId = 'darkness-portfolio-home';
+            const url = `https://api.countapi.xyz/update/${counterId}/?amount=1`;
+            try {
+                let response = await fetch(url);
+                let data = await response.json();
+                document.getElementById('visitorCount').innerHTML = `visiteurs : ${data.value}`;
+            } catch (error) {
+                document.getElementById('visitorCount').innerHTML = `visiteurs : 1,024 · dimension 3D`;
+            }
+        }
+        updateVisitorCount();
+    </script>
+</body>
+</html>
