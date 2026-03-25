@@ -1,0 +1,284 @@
+ <!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>THE DARKNESS · Développeur</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: #0a0a0a;
+            color: #e0e0e0;
+            font-family: 'Segoe UI', 'Courier New', monospace;
+            line-height: 1.6;
+            padding: 2rem;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        nav {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+        nav a {
+            color: #e0e0e0;
+            text-decoration: none;
+            font-weight: bold;
+            padding: 0.5rem 1rem;
+            border-radius: 30px;
+            transition: 0.2s;
+        }
+        nav a:hover, nav a.active {
+            background: #00ff99;
+            color: #0a0a0a;
+        }
+
+        .hero {
+            text-align: center;
+            padding: 4rem 0;
+            border-bottom: 2px solid #1f1f1f;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            font-family: 'Courier New', monospace;
+            color: #00ff99;
+            text-shadow: 0 0 5px #00ff99;
+        }
+
+        .hero .tagline {
+            font-size: 1.2rem;
+            margin: 1rem 0;
+            color: #aaa;
+        }
+
+        .hero p {
+            max-width: 600px;
+            margin: 1rem auto;
+        }
+
+        .section {
+            margin: 4rem 0;
+        }
+
+        .section h2 {
+            font-size: 2rem;
+            border-left: 5px solid #00ff99;
+            padding-left: 1rem;
+            margin-bottom: 2rem;
+            font-family: 'Courier New', monospace;
+        }
+
+        .skills {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .skill {
+            background: #1a1a1a;
+            padding: 0.5rem 1.2rem;
+            border-radius: 30px;
+            border: 1px solid #2a2a2a;
+            font-weight: bold;
+            transition: 0.2s;
+        }
+
+        .skill:hover {
+            border-color: #00ff99;
+            color: #00ff99;
+            transform: scale(1.02);
+        }
+
+        .contact-form {
+            background: #111;
+            border-radius: 20px;
+            padding: 2rem;
+            border: 1px solid #2a2a2a;
+            margin-top: 2rem;
+        }
+
+        .form-group {
+            margin-bottom: 1.2rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: #00ff99;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 0.8rem;
+            background: #1a1a1a;
+            border: 1px solid #2a2a2a;
+            border-radius: 8px;
+            color: #fff;
+            font-family: inherit;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: #00ff99;
+        }
+
+        button {
+            background: #00ff99;
+            color: #0a0a0a;
+            border: none;
+            padding: 0.8rem 2rem;
+            border-radius: 40px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+
+        button:hover {
+            background: #00cc77;
+            transform: scale(1.02);
+        }
+
+        .contact-links {
+            display: flex;
+            gap: 1.5rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin: 2rem 0;
+        }
+
+        .contact-links a {
+            color: #e0e0e0;
+            text-decoration: none;
+            background: #1a1a1a;
+            padding: 0.6rem 1.5rem;
+            border-radius: 40px;
+            border: 1px solid #2a2a2a;
+            transition: 0.2s;
+        }
+
+        .contact-links a:hover {
+            border-color: #00ff99;
+            color: #00ff99;
+            background: #111;
+        }
+
+        .visitor-counter {
+            text-align: center;
+            margin: 2rem 0;
+            font-size: 0.9rem;
+            color: #888;
+        }
+
+        footer {
+            text-align: center;
+            margin-top: 5rem;
+            padding-top: 2rem;
+            border-top: 1px solid #1f1f1f;
+            font-size: 0.8rem;
+            color: #666;
+        }
+
+        @media (max-width: 700px) {
+            body {
+                padding: 1rem;
+            }
+            .hero h1 {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <nav>
+            <a href="index.html" class="active">Accueil</a>
+            <a href="projetos.html">Projets</a>
+        </nav>
+
+        <div class="hero">
+            <h1>THE DARKNESS</h1>
+            <div class="tagline">⚡ Développeur | Créateur du bot DARKNESS X-MD ⚡</div>
+            <p>Passionné par le code, les automatisations et la création d’outils utiles. Je transforme les idées en lignes de code.</p>
+        </div>
+
+        <div class="section">
+            <h2>Compétences</h2>
+            <div class="skills">
+                <span class="skill">HTML5</span>
+                <span class="skill">CSS3</span>
+                <span class="skill">JavaScript (ES6+)</span>
+                <span class="skill">Node.js</span>
+                <span class="skill">API REST</span>
+                <span class="skill">Git & GitHub</span>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>Me contacter</h2>
+            <div class="contact-links">
+                <a href="https://github.com/">GitHub</a>
+                <a href="https://twitter.com/">Twitter / X</a>
+                <a href="mailto:darkness@example.com">Email</a>
+                <a href="https://wa.me/237655374632">WhatsApp</a>
+            </div>
+
+            <div class="contact-form">
+                <h3 style="color:#00ff99; margin-bottom:1rem;">Envoyez-moi un message</h3>
+                <form action="https://formspree.io/f/xreozwkg" method="POST">
+                    <div class="form-group">
+                        <label for="name">Nom / pseudo</label>
+                        <input type="text" name="name" id="name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" name="_replyto" id="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="message">Message</label>
+                        <textarea name="message" id="message" rows="4" required></textarea>
+                    </div>
+                    <button type="submit">Envoyer</button>
+                </form>
+            </div>
+        </div>
+
+        <div class="visitor-counter" id="visitorCount">
+            Chargement du nombre de visiteurs...
+        </div>
+
+        <footer>
+            <p>© 2025 THE DARKNESS — Conçu avec 💀 et JavaScript</p>
+        </footer>
+    </div>
+
+    <script>
+        async function updateVisitorCount() {
+            const counterId = 'darkness-portfolio-global';
+            const url = `https://api.countapi.xyz/update/${counterId}/?amount=1`;
+
+            try {
+                let response = await fetch(url);
+                let data = await response.json();
+                document.getElementById('visitorCount').innerHTML = `👁️ Visiteurs : ${data.value}`;
+            } catch (error) {
+                document.getElementById('visitorCount').innerHTML = `👁️ Visiteurs : 42 (démo)`;
+                console.warn("CountAPI non accessible, mode démo.");
+            }
+        }
+        updateVisitorCount();
+    </script>
+</body>
+</html>
