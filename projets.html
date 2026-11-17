@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>THE DARKNESS — Projets</title>
-<meta name="description" content="Découvrez les projets de THE DARKNESS : bot WhatsApp DARKNESS X-MD, bot Telegram THE DARKNESS V1 et futures réalisations.">
+<meta name="description" content="Découvrez les projets de THE DARKNESS : DARKNESS X-MD, THE DARKNESS V1 sur Telegram, MAKIMA M-DX et futures réalisations.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -82,16 +82,18 @@ a{color:inherit;text-decoration:none}
 .project-image-img img{width:100%;height:100%;object-fit:cover;transition:.35s ease}
 .project-card:hover .project-image-img img{transform:scale(1.03)}
 
-/* NOUVEAU : liste de fonctionnalités des cartes projets */
+/* Liste de fonctionnalités des cartes projets */
 .project-features{list-style:none;display:grid;gap:9px;margin:0 0 20px;padding:0}
 .project-features li{display:flex;align-items:flex-start;gap:9px;color:#555;font-size:11.5px;line-height:1.6}
-.project-features li i{color:var(--telegram);font-size:11px;margin-top:3px;flex-shrink:0}
+.project-features li i{color:var(--whatsapp);font-size:11px;margin-top:3px;flex-shrink:0}
 
-/* NOUVEAU : bouton d'action projet */
+/* Bouton d'action projet */
 .project-btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:42px;padding:0 16px;border-radius:9px;font-size:11px;font-weight:700;border:1px solid #111;background:#111;color:#fff;transition:.25s ease;cursor:pointer;margin-bottom:18px}
 .project-btn:hover{background:#2a2a2a;border-color:#2a2a2a;transform:translateY(-2px);box-shadow:0 12px 28px rgba(0,0,0,.15)}
 .project-btn.telegram{background:var(--telegram);border-color:var(--telegram);box-shadow:0 12px 28px rgba(34,158,217,.28)}
 .project-btn.telegram:hover{background:#1e8dc4;border-color:#1e8dc4;box-shadow:0 15px 35px rgba(34,158,217,.4)}
+.project-btn.whatsapp{background:var(--whatsapp);border-color:var(--whatsapp);box-shadow:0 12px 28px rgba(37,211,102,.28)}
+.project-btn.whatsapp:hover{background:#1eb356;border-color:#1eb356;box-shadow:0 15px 35px rgba(37,211,102,.4)}
 
 .project-footer{display:flex;align-items:center;justify-content:space-between;padding-top:18px;border-top:1px solid #eee}
 .project-status{font-size:10px;color:#999;letter-spacing:.3px}
@@ -162,7 +164,7 @@ footer{background:#111;color:#888;padding:60px 0 40px;margin-top:80px}
   <div class="container">
     <div class="eyebrow">Portfolio · Réalisations</div>
     <h1>L'écosystème <span>DARKNESS</span></h1>
-    <p class="section-description">Des bots puissants et des outils pensés pour repousser les limites. Découvrez DARKNESS X-MD sur WhatsApp et THE DARKNESS V1 sur Telegram.</p>
+    <p class="section-description">Des bots puissants et des outils pensés pour repousser les limites. Découvrez DARKNESS X-MD, THE DARKNESS V1 sur Telegram et MAKIMA M-DX sur WhatsApp.</p>
   </div>
 </section>
 
@@ -204,12 +206,13 @@ footer{background:#111;color:#888;padding:60px 0 40px;margin-top:80px}
       <div class="project-card">
         <div class="project-badge"><i class="fa-brands fa-telegram"></i> Telegram · En production</div>
         <h3>THE DARKNESS V1</h3>
-        <p>Bot Telegram multifonction ultra-puissant : téléchargement de médias, gestion de diffusion, et création de stickers. Développé avec GramIO (Node.js), SQLite et MTProto.</p>
+        <p>Bot Telegram multifonction ultra-puissant : téléchargement de médias, IA, gestion de communauté et création de stickers. Développé avec GramIO (Node.js), SQLite et MTProto.</p>
 
         <ul class="project-features">
           <li><i class="fa-solid fa-check"></i> Téléchargement YouTube, Snapchat et plus (MP3 / MP4)</li>
           <li><i class="fa-solid fa-check"></i> Recherche d'images Pinterest en carrousel (10 ou 50)</li>
           <li><i class="fa-solid fa-check"></i> Création de packs de stickers (.webp / .webm)</li>
+          <li><i class="fa-solid fa-check"></i> Mémoire IA en SQLite &amp; intégrations API</li>
           <li><i class="fa-solid fa-check"></i> Diffusion de masse &amp; gestion de groupes</li>
           <li><i class="fa-solid fa-check"></i> Bypass des limites jusqu'à 2 Go via MTProto</li>
         </ul>
@@ -228,15 +231,32 @@ footer{background:#111;color:#888;padding:60px 0 40px;margin-top:80px}
         </div>
       </div>
 
-      <!-- PROJET 02 : placeholder -->
+      <!-- PROJET 02 : MAKIMA M-DX (WhatsApp) -->
       <div class="project-card">
-        <div class="project-badge"><i class="fa-solid fa-flask"></i> En préparation</div>
-        <h3>Projet 02</h3>
-        <p>Une réalisation centrée sur la performance et l'innovation. Stack technique en cours de définition.</p>
-        <div class="project-image">PROJET 02</div>
+        <div class="project-badge"><i class="fa-brands fa-whatsapp"></i> WhatsApp · En production</div>
+        <h3>MAKIMA M-DX</h3>
+        <p>Bot WhatsApp multi-appareils développé en Node.js (ESM) sur Baileys v7. Gestion de groupes, téléchargement, stickers, IA et protections automatiques — le tout sur plusieurs sessions simultanées.</p>
+
+        <ul class="project-features">
+          <li><i class="fa-solid fa-check"></i> Gestion de groupes : kick, promote, antilink, antispam, welcome</li>
+          <li><i class="fa-solid fa-check"></i> Téléchargements : YouTube, TikTok, Pinterest, MediaFire, APK</li>
+          <li><i class="fa-solid fa-check"></i> Stickers depuis image/vidéo, packs Telegram et take</li>
+          <li><i class="fa-solid fa-check"></i> Services IA : GPT-4o, chatbot &amp; génération d'images</li>
+          <li><i class="fa-solid fa-check"></i> Multi-sessions WhatsApp simultanées</li>
+          <li><i class="fa-solid fa-check"></i> Protections automatiques (antilink, antispam, antipromote)</li>
+        </ul>
+
+        <div class="project-image-img">
+          <img src="https://i.ibb.co/60KJkRmS/b164255a8a32.jpg" alt="MAKIMA M-DX — Bot WhatsApp multi-appareils">
+        </div>
+
+        <a href="https://wa.me/237671281938" target="_blank" rel="noopener" class="project-btn whatsapp">
+          <i class="fa-brands fa-whatsapp"></i> Contacter sur WhatsApp
+        </a>
+
         <div class="project-footer">
-          <span class="project-status">Conception avancée</span>
-          <div class="project-icon"><i class="fa-solid fa-lock"></i></div>
+          <span class="project-status">Actif · Baileys v7 · Node.js · ESM</span>
+          <div class="project-icon"><i class="fa-brands fa-whatsapp"></i></div>
         </div>
       </div>
 
