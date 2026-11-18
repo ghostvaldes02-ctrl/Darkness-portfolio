@@ -125,13 +125,47 @@ button,input,textarea{font-family:inherit}
 
 /* FOOTER */
 footer{background:#111;color:#888;padding:60px 0 40px;margin-top:80px}
-.footer-container{width:min(1180px,92%);margin:auto;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:25px}
+.footer-container{width:min(1180px,92%);margin:auto;display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:25px}
 .footer-brand{font-family:"Space Grotesk",sans-serif;font-size:22px;color:#fff;font-weight:700;letter-spacing:-.5px}
 .footer-brand span{color:#25D366}
-.footer-links{display:flex;gap:22px;flex-wrap:wrap}
+.footer-links{display:flex;gap:22px;flex-wrap:wrap;padding-top:6px}
 .footer-links a{font-size:11px;color:#888;transition:.25s}
 .footer-links a:hover{color:#fff}
 .footer-copy{width:100%;text-align:center;margin-top:40px;padding-top:30px;border-top:1px solid #222;font-size:10px;color:#555;letter-spacing:.5px}
+
+/* SOCIAL FOOTER (sous THE DARKNESS) */
+.footer-social {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 18px;
+  flex-wrap: wrap;
+}
+.footer-social a {
+  width: 38px;
+  height: 38px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background: #1c1c1c;
+  color: #888;
+  font-size: 14px;
+  transition: .3s ease;
+  border: 1px solid #2a2a2a;
+}
+.footer-social a:hover {
+  transform: translateY(-3px);
+  color: #fff;
+}
+.footer-social a.yt:hover  { background: #FF0000; border-color: #FF0000; }
+.footer-social a.tt:hover  { background: #000000; border-color: #000000; }
+.footer-social a.tw:hover  { background: #1DA1F2; border-color: #1DA1F2; }
+.footer-social a.ig:hover  { background: #E4405F; border-color: #E4405F; }
+.footer-social a.li:hover  { background: #0077B5; border-color: #0077B5; }
+.footer-social a.fb:hover  { background: #1877F2; border-color: #1877F2; }
+.footer-social a.wa:hover  { background: #25D366; border-color: #25D366; }
+.footer-social a.gh:hover  { background: #333; border-color: #555; }
 
 @media(max-width:960px){
   .hero-container{grid-template-columns:1fr;gap:50px;padding:60px 0}
@@ -325,7 +359,19 @@ footer{background:#111;color:#888;padding:60px 0 40px;margin-top:80px}
 <!-- FOOTER -->
 <footer>
   <div class="footer-container">
-    <div class="footer-brand">THE DARKNESS<span>.</span></div>
+    <div>
+      <div class="footer-brand">THE DARKNESS<span>.</span></div>
+      <div class="footer-social">
+        <a href="https://youtube.com/@thedarkness" target="_blank" rel="noopener" class="yt" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a>
+        <a href="https://tiktok.com/@thedarkness" target="_blank" rel="noopener" class="tt" aria-label="TikTok"><i class="fa-brands fa-tiktok"></i></a>
+        <a href="https://twitter.com/thedarkness" target="_blank" rel="noopener" class="tw" aria-label="Twitter / X"><i class="fa-brands fa-x-twitter"></i></a>
+        <a href="https://instagram.com/the_darkness_nemessis" target="_blank" rel="noopener" class="ig" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+        <a href="https://linkedin.com/in/thedarkness" target="_blank" rel="noopener" class="li" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
+        <a href="https://facebook.com/valdesofficiel" target="_blank" rel="noopener" class="fb" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+        <a href="https://wa.me/237671281938" target="_blank" rel="noopener" class="wa" aria-label="WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
+        <a href="https://github.com/ghostvaldes02-" target="_blank" rel="noopener" class="gh" aria-label="GitHub"><i class="fa-brands fa-github"></i></a>
+      </div>
+    </div>
     <div class="footer-links">
       <a href="index.html">Accueil</a>
       <a href="projets.html">Projets</a>
